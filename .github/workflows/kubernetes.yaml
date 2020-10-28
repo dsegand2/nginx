@@ -50,7 +50,8 @@ jobs:
             sudo rm -f $secret;
           done;        
           
-        kubectl apply -f $compose
+        #kubectl apply -f $compose
+        kubectl apply -f etc/kubernetes/nginx-deploy.yaml
         
         while true
           do
