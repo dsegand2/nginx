@@ -13,6 +13,7 @@ jobs:
       -
         name: build and test
         run: |
+          set -x
           docker build -t test --no-cache .
           sudo cp -rv run/* /run
           docker run -d \
@@ -25,10 +26,14 @@ jobs:
               sleep 10
               docker ps | grep Up && break
             done
-          docker ps
-          curl localhost:8080
           while true
             do
               sleep 10
               curl localhost:8080 -I | grep 200 && break
             done
+          while true
+            do
+              sleep 10
+              curl localhost:8080 | grep '<title>Welcome to nginx!</title>' && break
+            done
+
