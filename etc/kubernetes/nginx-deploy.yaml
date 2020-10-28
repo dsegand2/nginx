@@ -46,18 +46,18 @@ spec:
             -
               mountPath: /var/run
               name: nginx-run
-        volumes:
-          - 
-            configMap:
-              name: nginx.conf
-            name: nginx-conf
-          - 
-            name: nginx-default
-            secret:
-              secretName: default.conf
-          -
-            name: nginx-cache
-            emptyDir: {}
-          -
-            name: nginx-run
-            emptyDir: {}
+      volumes:
+        - 
+          configMap:
+            name: nginx.conf
+          name: nginx-conf
+        - 
+          name: nginx-default
+          secret:
+            secretName: default.conf
+        -
+          name: nginx-cache
+          emptyDir: {}
+        -
+          name: nginx-run
+          emptyDir: {}
