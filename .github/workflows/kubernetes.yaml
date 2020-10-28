@@ -2,7 +2,7 @@ name: kubernetes
 on: 
   push:
     branches: 
-    - master
+    - dev
 jobs:
   kubernetes:
     env:
@@ -35,6 +35,7 @@ jobs:
         
         project=$(basename $GITHUB_REPOSITORY)
         compose=etc/$mode/$project.yaml
+        
         sudo cp -rv run/* /run
         for config in $( find /run/configs -type f );
           do
@@ -48,7 +49,9 @@ jobs:
             kubectl create secret generic $file --from-file $secret;
             sudo rm -f $secret;
           done;        
+          
         kubectl apply -f $compose
+        
         while true
           do
             sleep 10
