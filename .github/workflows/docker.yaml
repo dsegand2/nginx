@@ -25,6 +25,8 @@ jobs:
               sleep 10
               docker ps | grep Up && break
             done
+          docker ps
+          curl localhost:8080
           while true
             do
               sleep 10
